@@ -1,0 +1,6 @@
+/vendor/
+/config/app_local.php
+/.idea/
+/.vscode/
+/.phpunit.result.cache
+composer.lock
