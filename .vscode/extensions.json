@@ -1,0 +1,14 @@
+{
+  "recommendations": [
+    "bmewburn.vscode-intelephense-client",
+    "junstyle.php-cs-fixer",
+    "editorconfig.editorconfig",
+    "eamodio.gitlens",
+    "mhutchie.git-graph",
+    "davidanson.vscode-markdownlint",
+    "redhat.vscode-yaml",
+    "github.copilot-chat",
+    "streetsidesoftware.code-spell-checker",
+    "streetsidesoftware.code-spell-checker-french"
+  ]
+}
