@@ -1,4 +1,5 @@
 /vendor/
+/.phpunit.cache/
 /config/app_local.php
 /.idea/
 /.phpunit.result.cache
