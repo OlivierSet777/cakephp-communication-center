@@ -27,7 +27,7 @@
     }
   },
   "scripts": {
-    "test": "phpunit",
+    "test": "phpunit -c phpunit.xml.dist",
     "cs-check": "phpcs --standard=CakePHP src tests",
     "cs-fix": "phpcbf --standard=CakePHP src tests"
   },
