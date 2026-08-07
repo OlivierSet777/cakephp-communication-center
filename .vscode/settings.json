@@ -11,9 +11,10 @@
     "editor.formatOnSave": true,
 
     "[php]": {
-        "editor.defaultFormatter": "junstyle.php-cs-fixer",
-        "editor.tabSize": 4,
-        "editor.insertSpaces": true
+      "editor.defaultFormatter": "junstyle.php-cs-fixer",
+      "editor.formatOnSave": false,
+      "editor.tabSize": 4,
+      "editor.insertSpaces": true
     },
 
     "[json]": {
@@ -35,6 +36,5 @@
     "intelephense.environment.phpVersion": "8.3",
     "intelephense.files.maxSize": 5000000,
 
-    "php-cs-fixer.onsave": true,
     "php-cs-fixer.allowRisky": false
 }
