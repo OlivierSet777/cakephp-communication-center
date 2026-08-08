@@ -18,6 +18,13 @@ use CommunicationCenter\Service\CommunicationService;
 class CommunicationCenterPlugin extends BasePlugin
 {
     /**
+     * Whether the plugin has routes.
+     *
+     * @var bool
+     */
+    protected bool $routesEnabled = true;
+
+    /**
      * Register application container services.
      *
      * @param \Cake\Core\ContainerInterface $container Container.
