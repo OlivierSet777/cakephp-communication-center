@@ -14,6 +14,7 @@
   },
   "require-dev": {
     "cakephp/cakephp-codesniffer": "^5.0",
+    "cakephp/migrations": "^5.2",
     "phpunit/phpunit": "^10.5 || ^11.0"
   },
   "autoload": {
