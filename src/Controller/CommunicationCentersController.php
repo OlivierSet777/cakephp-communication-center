@@ -66,11 +66,17 @@ class CommunicationCentersController extends Controller
             $channels->get('whatsapp'),
         );
 
+        $recipientsById = [];
+
+        foreach ($recipients as $recipient) {
+            $recipientsById[$recipient->externalId] = $recipient;
+        }
+
         $this->set(compact(
             'actions',
             'message',
             'providerName',
-            'recipients',
+            'recipientsById',
         ));
 
         return null;

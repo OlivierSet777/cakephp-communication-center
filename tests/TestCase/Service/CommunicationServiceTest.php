@@ -52,6 +52,36 @@ class CommunicationServiceTest extends TestCase
 
         $this->assertCount(3, $actions);
 
+        $this->assertSame(
+            '145',
+            $actions[0]->recipientId,
+        );
+
+        $this->assertSame(
+            'Bonjour Jean, cotisation Août.',
+            $actions[0]->message,
+        );
+
+        $this->assertSame(
+            '287',
+            $actions[1]->recipientId,
+        );
+
+        $this->assertSame(
+            'Bonjour Jack, cotisation August.',
+            $actions[1]->message,
+        );
+
+        $this->assertSame(
+            '392',
+            $actions[2]->recipientId,
+        );
+
+        $this->assertSame(
+            'Bonjour Li Wei, cotisation 八月.',
+            $actions[2]->message,
+        );
+
         $this->assertStringContainsString(
             'wa.me/33612345678',
             $actions[0]->url ?? '',

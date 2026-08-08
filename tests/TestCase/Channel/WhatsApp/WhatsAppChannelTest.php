@@ -60,6 +60,15 @@ class WhatsAppChannelTest extends TestCase
             'https://wa.me/33612345678?text=Bonjour%20Jean%20%21',
             $action->url,
         );
+        $this->assertSame(
+            '145',
+            $action->recipientId,
+        );
+
+        $this->assertSame(
+            'Bonjour Jean !',
+            $action->message,
+        );
     }
 
     public function testSupportsDifferentCountries(): void

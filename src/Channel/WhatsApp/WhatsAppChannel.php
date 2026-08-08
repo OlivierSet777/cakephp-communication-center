@@ -52,6 +52,8 @@ final class WhatsAppChannel implements ChannelInterface
                 $phone->forWhatsApp(),
                 rawurlencode($message),
             ),
+            recipientId: $recipient->externalId,
+            message: $message,
         );
     }
 }

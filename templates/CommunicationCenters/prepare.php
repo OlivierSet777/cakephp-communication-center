@@ -1,8 +1,8 @@
 <?php
 /**
  * @var \Cake\View\View $this
- * @var array $actions
- * @var array $recipients
+ * @var array<int, \CommunicationCenter\Channel\ChannelAction> $actions
+ * @var array<string, \CommunicationCenter\Recipient\Recipient> $recipientsById
  * @var string $message
  * @var string $providerName
  */
@@ -26,8 +26,12 @@
 
             <div class="list-group mb-4">
 
-                <?php foreach ($actions as $index => $action): ?>
-                    <?php $recipient = $recipients[$index] ?? null; ?>
+                <?php foreach ($actions as $action): ?>
+                    <?php
+                    $recipient = $action->recipientId !== null
+                        ? ($recipientsById[$action->recipientId] ?? null)
+                        : null;
+                    ?>
 
                     <?php if ($recipient === null): ?>
                         <?php continue; ?>
