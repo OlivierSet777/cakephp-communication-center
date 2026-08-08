@@ -5,6 +5,7 @@ namespace CommunicationCenter\Channel\WhatsApp;
 
 use CommunicationCenter\Channel\ChannelAction;
 use CommunicationCenter\Channel\ChannelInterface;
+use CommunicationCenter\Phone\PhoneNumber;
 use CommunicationCenter\Recipient\Recipient;
 
 /**
@@ -25,8 +26,13 @@ final class WhatsAppChannel implements ChannelInterface
      */
     public function supports(Recipient $recipient): bool
     {
-        return $recipient->phone !== null
-            && trim($recipient->phone) !== '';
+        if ($recipient->phone === null) {
+            return false;
+        }
+
+        $phone = new PhoneNumber($recipient->phone);
+
+        return $phone->isValid();
     }
 
     /**
@@ -36,30 +42,16 @@ final class WhatsAppChannel implements ChannelInterface
         Recipient $recipient,
         string $message,
     ): ChannelAction {
-        $phone = $this->normalizePhone(
-            $recipient->phone ?? '',
-        );
+        $phone = new PhoneNumber($recipient->phone ?? '');
 
         return new ChannelAction(
             channel: $this->getName(),
             action: 'open_url',
             url: sprintf(
                 'https://wa.me/%s?text=%s',
-                $phone,
+                $phone->forWhatsApp(),
                 rawurlencode($message),
             ),
         );
-    }
-
-    /**
-     * Converts an international phone number
-     * into the format expected by WhatsApp.
-     *
-     * @param string $phone International phone number.
-     * @return string
-     */
-    private function normalizePhone(string $phone): string
-    {
-        return preg_replace('/\D+/', '', $phone) ?? '';
     }
 }

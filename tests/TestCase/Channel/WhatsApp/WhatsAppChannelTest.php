@@ -99,4 +99,28 @@ class WhatsAppChannelTest extends TestCase
             );
         }
     }
+
+    public function testDoesNotSupportLocalPhoneNumber(): void
+    {
+        $channel = new WhatsAppChannel();
+
+        $recipient = new Recipient(
+            externalId: '145',
+            phone: '06 12 34 56 78',
+        );
+
+        $this->assertFalse($channel->supports($recipient));
+    }
+
+    public function testDoesNotSupportInvalidPhoneNumber(): void
+    {
+        $channel = new WhatsAppChannel();
+
+        $recipient = new Recipient(
+            externalId: '145',
+            phone: 'bonjour',
+        );
+
+        $this->assertFalse($channel->supports($recipient));
+    }
 }
