@@ -41,6 +41,7 @@ final class WhatsAppChannel implements ChannelInterface
     public function prepare(
         Recipient $recipient,
         string $message,
+        array $options = [],
     ): ChannelAction {
         $phone = new PhoneNumber($recipient->phone ?? '');
 

@@ -18,6 +18,8 @@ use Cake\ORM\Entity;
  * @property int $processed_count
  * @property \Cake\I18n\DateTime $created
  * @property \Cake\I18n\DateTime $modified
+ * @property bool $archived
+ * @property string|null $subject
  *
  * @property \CommunicationCenter\Model\Entity\CommunicationRecipient[] $communication_recipients
  */
@@ -43,5 +45,7 @@ class CommunicationCampaign extends Entity
         'created' => true,
         'modified' => true,
         'communication_recipients' => true,
+        'archived' => true,
+        'subject' => true,
     ];
 }

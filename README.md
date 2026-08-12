@@ -1,5 +1,7 @@
 # CakePHP Communication Center
 
+🇫🇷 Documentation française : [README.fr.md](README.fr.md)
+
 A reusable, mobile-first communication hub for CakePHP 5 applications.
 
 ## Vision
@@ -30,15 +32,155 @@ The first integration will be host application:
 - English code, translatable user interface
 - tests and documentation from the beginning
 
-## Planned installation
+## Current status
+
+Communication Center V1 is functional and has been validated in a separate CakePHP sandbox application.
+
+Currently supported:
+
+- WhatsApp campaigns
+- Email campaigns
+- persistent campaigns and recipient snapshots
+- reusable message templates
+- recipient filtering supplied by the host application
+- personalized message variables
+- campaign progress tracking
+- campaign history
+- archive and restore
+- responsive Bootstrap 5 interface
+- automated tests and CakePHP coding-standard checks
+
+## Installation
+
+Load the plugin in the CakePHP host application:
 
 ```bash
-composer require vendor/communication-center
 bin/cake plugin load CommunicationCenter
-bin/cake migrations migrate --plugin CommunicationCenter
 ```
 
-The package is currently in architectural design and is not yet installable.
+Run the plugin migrations:
+
+```bash
+bin/cake migrations migrate -p CommunicationCenter
+```
+
+Check migration status:
+
+```bash
+bin/cake migrations status -p CommunicationCenter
+```
+
+The plugin provides its routes under:
+
+```text
+/communication-center
+```
+
+## Host application integration
+
+Communication Center remains independent from the business model of the host application.
+
+The plugin provides:
+
+- `ChannelRegistry`
+- `RecipientProviderRegistry`
+- `CommunicationService`
+- `CampaignService`
+- `EmailCampaignService`
+- `WhatsAppChannel`
+- `EmailChannel`
+- campaigns and recipient persistence
+- message templates
+- the Communication Center UI
+
+The host application provides:
+
+- recipient data
+- business-specific filtering
+- SMTP configuration
+- one or more Recipient Providers
+
+A host application should not require Communication Center to directly know its
+Users, Members, Volunteers or other business entities.
+
+### Registering a Recipient Provider
+
+The host application registers its provider in `Application::services()`:
+
+```php
+use App\CommunicationCenter\AppRecipientProvider;
+use CommunicationCenter\Recipient\Provider\Registry\RecipientProviderRegistry;
+
+$container->addShared(
+    RecipientProviderRegistry::class,
+    function (): RecipientProviderRegistry {
+        $registry = new RecipientProviderRegistry();
+
+        $registry->set(
+            'app',
+            new AppRecipientProvider(),
+        );
+
+        return $registry;
+    },
+);
+```
+
+For business-specific filters, the provider can implement
+`FilterableRecipientProviderInterface`. The application remains responsible for
+defining and applying those filters.
+
+## Message templates
+
+V1 includes reusable message templates.
+
+A template contains a name, a channel, an optional Email subject, a message body
+and an active/inactive status.
+
+Only active templates matching the selected campaign channel are proposed.
+Selecting a template pre-fills the campaign subject and message while keeping
+them editable before preparation.
+
+Templates are managed under:
+
+```text
+/communication-center/templates
+```
+
+## Email configuration
+
+SMTP configuration belongs to the host CakePHP application. Communication Center
+uses the host application's CakePHP Email configuration through `CakeEmailSender`
+and does not store SMTP credentials itself.
+
+## Development checks
+
+Run the coding-standard checks:
+
+```bash
+composer cs-check
+```
+
+Apply automatically fixable coding-standard corrections:
+
+```bash
+composer cs-fix
+```
+
+Run the automated tests:
+
+```bash
+composer test
+```
+
+Before committing changes, the expected baseline is:
+
+```bash
+composer cs-check
+composer test
+```
+
+Both commands should pass.
 
 ## Documentation
 
@@ -167,3 +309,39 @@ Communication Center
                 │
                 ▼
         Interface de traitement
+
+## V1 completed
+
+- [x] WhatsApp channel
+- [x] Email channel
+- [x] international phone numbers
+- [x] recipient providers
+- [x] filterable recipient providers
+- [x] host-defined business filters
+- [x] personalized variables
+- [x] persistent campaigns
+- [x] recipient snapshots
+- [x] campaign progress
+- [x] campaign history
+- [x] archive and restore
+- [x] dashboard statistics
+- [x] reusable message templates
+- [x] channel-specific templates
+- [x] template activation/deactivation
+- [x] template pre-fill during campaign creation
+- [x] responsive Bootstrap interface
+- [x] CakePHP service container integration
+- [x] automated tests
+- [x] CakePHP coding-standard validation
+- [x] validation in a separate CakePHP sandbox
+
+## V1 scope
+
+V1 deliberately stays focused.
+
+Advanced features such as campaign/template analytics, persistent
+`communication_template_id` relationships, campaign duplication and advanced
+automation are intentionally left for a later version.
+
+The priority of V1 is a stable and reusable integration boundary between
+Communication Center and CakePHP host applications.

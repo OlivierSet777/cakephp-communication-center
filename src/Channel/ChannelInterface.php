@@ -26,11 +26,16 @@ interface ChannelInterface
     public function supports(Recipient $recipient): bool;
 
     /**
-     * Prepares the channel action for a recipient.
+     * Prepare a channel action.
      *
      * @param \CommunicationCenter\Recipient\Recipient $recipient Recipient.
      * @param string $message Rendered message.
+     * @param array<string, mixed> $options Channel options.
      * @return \CommunicationCenter\Channel\ChannelAction
      */
-    public function prepare(Recipient $recipient, string $message): ChannelAction;
+    public function prepare(
+        Recipient $recipient,
+        string $message,
+        array $options = [],
+    ): ChannelAction;
 }

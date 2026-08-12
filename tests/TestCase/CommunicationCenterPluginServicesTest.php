@@ -10,12 +10,39 @@ use CommunicationCenter\CommunicationCenterPlugin;
 use CommunicationCenter\Message\MessageRendererInterface;
 use CommunicationCenter\Message\SimpleMessageRenderer;
 use CommunicationCenter\Recipient\Provider\Registry\RecipientProviderRegistry;
+use CommunicationCenter\Service\CampaignService;
 use CommunicationCenter\Service\CommunicationService;
 use League\Container\ReflectionContainer;
 use PHPUnit\Framework\TestCase;
 
 class CommunicationCenterPluginServicesTest extends TestCase
 {
+    /**
+     * Test CampaignService can be resolved from the container.
+     *
+     * @return void
+     */
+    public function testCampaignServiceCanBeResolved(): void
+    {
+        $container = new Container();
+
+        $plugin = new CommunicationCenterPlugin();
+        $plugin->services($container);
+
+        $container->delegate(
+            new ReflectionContainer(),
+        );
+
+        $service = $container->get(
+            CampaignService::class,
+        );
+
+        $this->assertInstanceOf(
+            CampaignService::class,
+            $service,
+        );
+    }
+
     public function testPluginRegistersServices(): void
     {
         $container = new Container();

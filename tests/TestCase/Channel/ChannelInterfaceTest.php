@@ -23,7 +23,7 @@ class ChannelInterfaceTest extends TestCase
                 return $recipient->phone !== null;
             }
 
-            public function prepare(Recipient $recipient, string $message): ChannelAction
+            public function prepare(Recipient $recipient, string $message, array $options = []): ChannelAction
             {
                 return new ChannelAction(
                     channel: $this->getName(),
@@ -69,7 +69,7 @@ class ChannelInterfaceTest extends TestCase
                 return $recipient->phone !== null;
             }
 
-            public function prepare(Recipient $recipient, string $message): ChannelAction
+            public function prepare(Recipient $recipient, string $message, array $options = []): ChannelAction
             {
                 return new ChannelAction(
                     channel: $this->getName(),

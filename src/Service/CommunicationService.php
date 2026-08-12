@@ -30,12 +30,14 @@ final readonly class CommunicationService
      * @param iterable<\CommunicationCenter\Recipient\Recipient> $recipients Recipients.
      * @param string $template Message template.
      * @param \CommunicationCenter\Channel\ChannelInterface $channel Communication channel.
+     * @param array<string, mixed> $options Channel options.
      * @return array<\CommunicationCenter\Channel\ChannelAction>
      */
     public function prepare(
         iterable $recipients,
         string $template,
         ChannelInterface $channel,
+        array $options = [],
     ): array {
         $actions = [];
 
@@ -56,6 +58,7 @@ final readonly class CommunicationService
             $actions[] = $channel->prepare(
                 $recipient,
                 $message,
+                $options,
             );
         }
 
