@@ -56,7 +56,7 @@ métier particulier.
 
 - CakePHP 5
 - PHP 8.1+
-- Bootstrap 5 pour l'interface fournie
+- Bootstrap 5 CSS pour l'interface fournie
 - Composer
 
 ## Principes
@@ -64,7 +64,8 @@ métier particulier.
 - compatible CakePHP 5 ;
 - PHP 8.1+ ;
 - mobile first ;
-- Bootstrap 5 ;
+- Bootstrap 5 CSS requis par l'interface V1 ;
+- CakePHP Bootstrap-UI n'est pas requis ;
 - aucune dépendance obligatoire à jQuery ;
 - cœur indépendant du métier ;
 - canaux et Recipient Providers extensibles ;
@@ -72,6 +73,17 @@ métier particulier.
 - code source en anglais ;
 - interface utilisateur traduisible ;
 - tests et documentation.
+
+## Dépendance de l'interface V1
+
+L'interface fournie par Communication Center utilise les classes CSS de Bootstrap 5.
+L'application hôte doit donc charger **Bootstrap 5 CSS** pour obtenir la mise en page prévue.
+
+Le plugin CakePHP **Bootstrap-UI n'est pas nécessaire**. Communication Center n'utilise pas ses helpers : seule la feuille de style Bootstrap 5 est requise.
+
+Sans Bootstrap 5 CSS, les fonctionnalités du plugin restent disponibles, mais l'interface ne bénéficie pas de la mise en page et du rendu prévus.
+
+Une future version pourra rendre l'interface totalement autonome afin de supprimer cette dépendance visuelle.
 
 ## Installation
 

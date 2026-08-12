@@ -1,7 +1,5 @@
 # CakePHP Communication Center
 
-🇫🇷 Documentation française : [README.fr.md](README.fr.md)
-
 A reusable, mobile-first communication hub for CakePHP 5 applications.
 
 ## Vision
@@ -25,7 +23,8 @@ The first integration will be host application:
 - CakePHP 5 compatible
 - PHP 8.1+
 - mobile first
-- Bootstrap 5
+- Bootstrap 5 CSS required by the V1 interface
+- CakePHP Bootstrap-UI is not required
 - no mandatory jQuery dependency
 - business-agnostic core
 - extensible channels and recipient providers
@@ -49,6 +48,17 @@ Currently supported:
 - archive and restore
 - responsive Bootstrap 5 interface
 - automated tests and CakePHP coding-standard checks
+
+## V1 interface dependency
+
+The interface provided by Communication Center uses Bootstrap 5 CSS classes.
+The host application must therefore load **Bootstrap 5 CSS** to get the intended layout and presentation.
+
+The CakePHP **Bootstrap-UI plugin is not required**. Communication Center does not depend on its helpers; only the Bootstrap 5 stylesheet is required.
+
+Without Bootstrap 5 CSS, the plugin functionality remains available, but the interface will not have the intended layout and styling.
+
+A future version may make the interface fully self-contained and remove this visual dependency.
 
 ## Installation
 
