@@ -64,7 +64,6 @@ class CreateCommunicationCampaignsAndRecipients extends BaseMigration
         $recipients
             ->addColumn('communication_campaign_id', 'integer', [
                 'null' => false,
-                'signed' => false,
             ])
             ->addColumn('external_id', 'string', [
                 'limit' => 255,
