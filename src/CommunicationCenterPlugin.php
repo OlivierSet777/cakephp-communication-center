@@ -18,6 +18,7 @@ use CommunicationCenter\Recipient\Provider\Registry\RecipientProviderRegistry;
 use CommunicationCenter\Service\CampaignService;
 use CommunicationCenter\Service\CommunicationService;
 use CommunicationCenter\Service\EmailCampaignService;
+use Cake\Core\Configure;
 
 /**
  * Plugin for Communication Center.
@@ -67,7 +68,16 @@ class CommunicationCenterPlugin extends BasePlugin
 
         $container->addShared(
             EmailSenderInterface::class,
-            CakeEmailSender::class,
+            function (): EmailSenderInterface {
+                $config = Configure::read('CommunicationCenter.email', []);
+
+                return new CakeEmailSender(
+                    mailerProfile: $config['profile'] ?? 'default',
+                    template: $config['template'] ?? 'CommunicationCenter.default',
+                    layout: $config['layout'] ?? 'default',
+                    viewVars: $config['viewVars'] ?? [],
+                );
+            },
         );
 
         $container->addShared(EmailCampaignService::class)
