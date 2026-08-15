@@ -17,12 +17,16 @@ final class CakeEmailSender implements EmailSenderInterface
      * @param string $template Email template.
      * @param string $layout Email layout.
      * @param array<string, mixed> $viewVars Additional view variables.
+     * @param string|null $logoPath Optional embedded logo path.
+     * @param string $logoCid Embedded logo CID.
      */
     public function __construct(
         private readonly string $mailerProfile = 'default',
         private readonly string $template = 'CommunicationCenter.default',
         private readonly string $layout = 'default',
         private readonly array $viewVars = [],
+        private readonly ?string $logoPath = null,
+        private readonly string $logoCid = 'communication-center-logo',
     ) {
     }
 
@@ -41,6 +45,7 @@ final class CakeEmailSender implements EmailSenderInterface
             [
                 'subject' => $subject,
                 'message' => $message,
+                'logoCid' => $this->logoCid,
             ],
         );
 
@@ -49,6 +54,19 @@ final class CakeEmailSender implements EmailSenderInterface
             ->setSubject($subject)
             ->setEmailFormat('html')
             ->setViewVars($viewVars);
+
+        if (
+            $this->logoPath !== null
+            && is_file($this->logoPath)
+        ) {
+            $mailer->addAttachments([
+                'communication-center-logo.png' => [
+                    'file' => $this->logoPath,
+                    'mimetype' => 'image/png',
+                    'contentId' => $this->logoCid,
+                ],
+            ]);
+        }
 
         $mailer
             ->viewBuilder()
