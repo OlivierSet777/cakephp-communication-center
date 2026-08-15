@@ -69,13 +69,20 @@ class CommunicationCenterPlugin extends BasePlugin
         $container->addShared(
             EmailSenderInterface::class,
             function (): EmailSenderInterface {
-                $config = Configure::read('CommunicationCenter.email', []);
+                $config = Configure::read(
+                    'CommunicationCenter.email',
+                    [],
+                );
 
                 return new CakeEmailSender(
                     mailerProfile: $config['profile'] ?? 'default',
-                    template: $config['template'] ?? 'CommunicationCenter.default',
+                    template: $config['template']
+                        ?? 'CommunicationCenter.default',
                     layout: $config['layout'] ?? 'default',
                     viewVars: $config['viewVars'] ?? [],
+                    logoPath: $config['logoPath'] ?? null,
+                    logoCid: $config['logoCid']
+                        ?? 'communication-center-logo',
                 );
             },
         );
