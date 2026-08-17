@@ -27,6 +27,6 @@ Version 0.1 focuses on the smallest useful product:
 
 These features remain candidates for later versions.
 
-## Definition of done for the host application pilot
+## Definition of done for the initial pilot
 
 The pilot is complete when an administrator can perform a monthly contribution reminder without manually searching contacts in WhatsApp.

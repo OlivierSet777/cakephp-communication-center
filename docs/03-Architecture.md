@@ -32,7 +32,7 @@
 
 ## Dependency rule
 
-The plugin must never depend on host application, SAJES, Association Les Liens or Assemblée Citoyenne.
+The plugin must never depend on any specific host application or business domain.
 
 The host application may depend on the plugin and provide adapters.
 

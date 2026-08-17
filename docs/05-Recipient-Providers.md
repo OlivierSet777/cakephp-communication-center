@@ -35,9 +35,9 @@ final readonly class RecipientData
 }
 ```
 
-## host application provider
+## Application-specific providers
 
-The host application integration will remain in the host application.
+Application-specific recipient providers must remain in the host application.
 
 It will expose filters such as:
 

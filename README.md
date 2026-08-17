@@ -8,14 +8,15 @@ The plugin centralizes campaigns, recipients, templates, channels and delivery h
 
 The plugin does not know what a volunteer, member, customer or citizen is. It only works with recipients exposed by a recipient provider.
 
-## Initial use case
+## Example use case
 
-The first integration will be host application:
+A typical integration can:
 
-- identify members whose monthly contribution has not been recorded;
+- expose recipients from the host application's business model;
+- apply application-specific filters;
 - select recipients from a mobile interface;
-- prepare individualized WhatsApp messages;
-- process recipients one by one;
+- prepare individualized WhatsApp or Email messages;
+- process recipients individually or through supported bulk actions;
 - preserve campaign progress and delivery history.
 
 ## Principles

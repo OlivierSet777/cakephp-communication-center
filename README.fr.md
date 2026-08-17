@@ -36,12 +36,10 @@ Fonctionnalités actuellement prises en charge :
 
 ## Exemple de cas d'utilisation
 
-host application est la première intégration réelle prévue.
-
 Un workflow typique peut être :
 
-1. exposer les adhérents via un Recipient Provider ;
-2. filtrer les adhérents dont la cotisation mensuelle n'a pas été enregistrée ;
+1. exposer les destinataires via un Recipient Provider ;
+2. appliquer les filtres métier définis par l'application hôte ;
 3. sélectionner les destinataires ;
 4. choisir WhatsApp ou Email ;
 5. sélectionner éventuellement un modèle de message ;
@@ -49,8 +47,7 @@ Un workflow typique peut être :
 7. traiter ou envoyer les messages ;
 8. conserver la progression et l'historique de la campagne.
 
-host application n'est qu'un exemple d'intégration. Le plugin reste indépendant de tout
-métier particulier.
+Le plugin reste totalement indépendant du métier de l'application hôte.
 
 ## Prérequis
 
@@ -248,7 +245,7 @@ L'application hôte reste responsable de l'application de ces critères dans
 `getRecipients()`.
 
 Ainsi, les filtres restent spécifiques au métier sans rendre le plugin dépendant
-d'host application ou d'une autre application.
+d'une application particulière.
 
 ## Objet Recipient
 

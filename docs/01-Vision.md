@@ -32,13 +32,14 @@ The plugin remains independent from the host application's business model.
 
 ## First practical objective
 
-For host application, the first usable release must allow an administrator, from a smartphone, to:
+The first usable release must allow an administrator, from a smartphone, to:
 
-- select a recycling center;
-- display members whose monthly contribution is unpaid;
+- select a recipient provider;
+- apply business-specific filters exposed by the host application;
+- display the matching recipients;
 - select all or some of them;
-- edit a predefined reminder;
-- open WhatsApp for each selected recipient with the message already filled in;
+- edit a predefined message;
+- open WhatsApp for each selected recipient with the personalized message already filled in;
 - mark each recipient as processed before moving to the next one.
 
 ## Long-term objective

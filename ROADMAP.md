@@ -1,13 +1,13 @@
 # Roadmap
 
-## 0.1 — host application WhatsApp pilot
+## 0.1 — WhatsApp pilot
 
 - plugin skeleton
 - migrations
 - campaign entities and tables
 - template entities and tables
 - recipient provider contract
-- host application unpaid-contribution provider
+- example filterable recipient provider
 - mobile recipient selection
 - WhatsApp deep links
 - progress tracking
