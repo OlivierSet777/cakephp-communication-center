@@ -14,6 +14,7 @@
 <?php
 $channelActionLabel = match ($campaign->channel) {
     'whatsapp' => 'Ouvrir WhatsApp',
+    'sms' => 'Envoyer le SMS',
     default => 'Ouvrir',
 };
 ?>

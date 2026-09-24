@@ -27,6 +27,7 @@
                     'class' => 'form-select',
                     'options' => [
                         'whatsapp' => 'WhatsApp',
+                        'sms' => 'SMS',
                         'email' => 'Email',
                     ],
                     'empty' => 'Choisir un canal',

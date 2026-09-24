@@ -82,6 +82,7 @@
                     'empty' => 'Tous les canaux',
                     'options' => [
                         'whatsapp' => 'WhatsApp',
+                        'sms' => 'SMS',
                         'email' => 'Email',
                     ],
                     'value' => $channel,

@@ -82,6 +82,7 @@
                         <?php
                         $channelLabel = match ($template->channel) {
                             'whatsapp' => 'WhatsApp',
+                            'sms' => 'SMS',
                             'email' => 'Email',
                             default => ucfirst($template->channel),
                         };

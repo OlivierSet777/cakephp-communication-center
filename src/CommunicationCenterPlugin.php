@@ -4,10 +4,12 @@ declare(strict_types=1);
 namespace CommunicationCenter;
 
 use Cake\Core\BasePlugin;
+use Cake\Core\Configure;
 use Cake\Core\ContainerInterface;
 use Cake\ORM\Locator\TableContainer;
 use CommunicationCenter\Channel\Email\EmailChannel;
 use CommunicationCenter\Channel\Registry\ChannelRegistry;
+use CommunicationCenter\Channel\Sms\SmsChannel;
 use CommunicationCenter\Channel\WhatsApp\WhatsAppChannel;
 use CommunicationCenter\Email\CakeEmailSender;
 use CommunicationCenter\Email\EmailSenderInterface;
@@ -18,7 +20,6 @@ use CommunicationCenter\Recipient\Provider\Registry\RecipientProviderRegistry;
 use CommunicationCenter\Service\CampaignService;
 use CommunicationCenter\Service\CommunicationService;
 use CommunicationCenter\Service\EmailCampaignService;
-use Cake\Core\Configure;
 
 /**
  * Plugin for Communication Center.
@@ -48,6 +49,7 @@ class CommunicationCenterPlugin extends BasePlugin
             $registry = new ChannelRegistry();
 
             $registry->set(new WhatsAppChannel());
+            $registry->set(new SmsChannel());
             $registry->set(new EmailChannel());
 
             return $registry;

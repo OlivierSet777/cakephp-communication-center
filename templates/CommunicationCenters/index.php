@@ -27,6 +27,7 @@
 <?php
 $channelLabels = [
     'whatsapp' => 'WhatsApp',
+    'sms' => 'SMS',
     'email' => 'Email',
 ];
 
